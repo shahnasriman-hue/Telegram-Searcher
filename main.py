@@ -698,7 +698,8 @@ class TelegramSearchHTTPHandler(BaseHTTPRequestHandler):
             rel_path = "/index.html"
         
         # Prevent directory traversal attacks
-        safe_path = os.path.normpath(rel_path).lstrip('/')
+        #safe_path = os.path.normpath(rel_path).lstrip('/')
+        safe_path = os.path.normpath(rel_path).lstrip('/\\')
         full_path = os.path.join(os.path.dirname(__file__), "static", safe_path)
         
         if not full_path.startswith(os.path.join(os.path.dirname(__file__), "static")):
